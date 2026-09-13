@@ -1,0 +1,6 @@
+@mvp_conf_2026_HostAddress = http://localhost:5187
+
+GET {{mvp_conf_2026_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
