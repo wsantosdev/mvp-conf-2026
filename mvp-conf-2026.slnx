@@ -1,3 +1,6 @@
 <Solution>
-  <Project Path="mvp-conf-2026/mvp-conf-2026.csproj" />
+  <Project Path="src\TodoList.Modern\TodoList.Modern.csproj" />
+  <Project Path="src\TodoList.Modern.Tests\TodoList.Modern.Tests.csproj" />
+  <Project Path="src\TodoList.NTier\TodoList.NTier.csproj" />
+  <Project Path="src\TodoList.NTier.Tests\TodoList.NTier.Tests.csproj" />
 </Solution>
