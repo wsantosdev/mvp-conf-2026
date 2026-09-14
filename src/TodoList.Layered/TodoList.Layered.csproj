@@ -5,6 +5,9 @@
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
         <RootNamespace>mvp_conf_2026</RootNamespace>
+        <AssemblyName>TodoList.Layered</AssemblyName>
+        <Company>TodoList.Layered</Company>
+        <Product>TodoList.Layered</Product>
     </PropertyGroup>
 
     <ItemGroup>

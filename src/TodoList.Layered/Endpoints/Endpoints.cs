@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
-using TodoList.NTier.Service;
+using TodoList.Layered.Service;
 
-namespace TodoList.NTier.Endpoints;
+namespace TodoList.Layered.Endpoints;
 
 public static class Endpoints
 {

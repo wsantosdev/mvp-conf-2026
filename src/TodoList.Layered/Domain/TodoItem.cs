@@ -1,4 +1,4 @@
-namespace TodoList.NTier.Domain;
+namespace TodoList.Layered.Domain;
 
 public class TodoItem
 {

@@ -4,7 +4,7 @@ using System.Text.Json;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Xunit;
 
-namespace TodoList.NTier.Tests;
+namespace TodoList.Layered.Tests;
 
 public class TodoWebApplicationFactoryTests : IClassFixture<WebApplicationFactory<Program>>
 {

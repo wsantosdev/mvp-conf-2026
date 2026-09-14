@@ -16,6 +16,6 @@
         </PackageReference>
     </ItemGroup>
     <ItemGroup>
-        <ProjectReference Include="..\TodoList.NTier\TodoList.NTier.csproj" />
+        <ProjectReference Include="..\TodoList.Layered\TodoList.Layered.csproj" />
     </ItemGroup>
 </Project>

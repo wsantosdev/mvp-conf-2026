@@ -1,7 +1,7 @@
-using TodoList.NTier.Domain;
-using TodoList.NTier.Infrastructure.Database;
+using TodoList.Layered.Domain;
+using TodoList.Layered.Infrastructure.Database;
 
-namespace TodoList.NTier.Service;
+namespace TodoList.Layered.Service;
 
 public class TodoService : ITodoService
 {

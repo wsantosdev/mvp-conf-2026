@@ -1,7 +1,7 @@
 using System.Collections.Concurrent;
-using TodoList.NTier.Domain;
+using TodoList.Layered.Domain;
 
-namespace TodoList.NTier.Infrastructure.Database;
+namespace TodoList.Layered.Infrastructure.Database;
 
 public class InMemoryTodoRepository : ITodoRepository
 {

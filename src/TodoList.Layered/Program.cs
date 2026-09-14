@@ -1,6 +1,6 @@
-using TodoList.NTier.Endpoints;
-using TodoList.NTier.Infrastructure.Database;
-using TodoList.NTier.Service;
+using TodoList.Layered.Endpoints;
+using TodoList.Layered.Infrastructure.Database;
+using TodoList.Layered.Service;
 
 var builder = WebApplication.CreateBuilder(args);
 

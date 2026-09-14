@@ -1,4 +1,4 @@
-namespace TodoList.NTier.Service;
+namespace TodoList.Layered.Service;
 
 public interface ITodoService
 {

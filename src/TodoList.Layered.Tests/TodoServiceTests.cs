@@ -1,9 +1,9 @@
-using TodoList.NTier.Domain;
-using TodoList.NTier.Infrastructure.Database;
-using TodoList.NTier.Service;
+using TodoList.Layered.Domain;
+using TodoList.Layered.Infrastructure.Database;
+using TodoList.Layered.Service;
 using Xunit;
 
-namespace TodoList.NTier.Tests;
+namespace TodoList.Layered.Tests;
 
 public class TodoServiceTests
 {
