@@ -15,9 +15,12 @@ As duas aplicações expõem os mesmos endpoints:
 
 | Operação | Método | Rota |
 | --- | --- | --- |
+| Listar tarefas | `GET` | `/api/v1/todos` |
 | Criar tarefa | `POST` | `/api/v1/todos` |
 | Cancelar tarefa | `POST` | `/api/v1/todos/{id}/cancel` |
 | Concluir tarefa | `POST` | `/api/v1/todos/{id}/complete` |
+
+O endpoint de listagem retorna uma coleção JSON com todas as tarefas; quando não há tarefas, retorna uma coleção vazia.
 
 O armazenamento utilizado nas duas versões é em memória, por meio de `ConcurrentDictionary`. Ele funciona como um detalhe de infraestrutura substituível e mantém o foco da demonstração nos limites arquiteturais.
 
@@ -46,6 +49,7 @@ No projeto `TodoList.Modern`, a aplicação depende de contratos — as **ports*
 Features/CreateTask/ICreateTaskPort.cs
 Features/CompleteTask/ICompleteTaskPort.cs
 Features/CancelTask/ICancelTaskPort.cs
+Features/ListTasks/IListTasksPort.cs
 Infrastructure/TodoStorageAdapter.cs
 ```
 
@@ -73,11 +77,15 @@ TodoList.Modern/
 │   │   ├── CompleteTaskEndpoint.cs
 │   │   ├── CompleteTaskHandler.cs
 │   │   └── ICompleteTaskPort.cs
-│   └── CancelTask/
+│   ├── CancelTask/
 │       ├── CancelTaskCommand.cs
 │       ├── CancelTaskEndpoint.cs
 │       ├── CancelTaskHandler.cs
 │       └── ICancelTaskPort.cs
+│   └── ListTasks/
+│       ├── ListTasksEndpoint.cs
+│       ├── ListTasksHandler.cs
+│       └── IListTasksPort.cs
 └── Infrastructure/
     └── TodoStorageAdapter.cs
 ```
@@ -97,7 +105,7 @@ Essa organização favorece alta coesão dentro de cada funcionalidade e torna m
 Os projetos de teste acompanham as duas abordagens:
 
 - `TodoList.Layered.Tests` testa o serviço e os fluxos HTTP da versão em camadas.
-- `TodoList.Modern.Tests` testa cada slice (`CreateTask`, `CompleteTask` e `CancelTask`) e seus fluxos HTTP.
+- `TodoList.Modern.Tests` testa cada slice (`CreateTask`, `CompleteTask`, `CancelTask` e `ListTasks`) e seus fluxos HTTP.
 
 Além dos caminhos felizes, os testes cobrem títulos vazios, tarefas inexistentes e transições de estado inválidas. A versão moderna evidencia o isolamento proporcionado pelas ports, usando implementações de teste dos contratos de cada funcionalidade.
 
@@ -126,7 +134,7 @@ dotnet run --project src/TodoList.Layered
 dotnet run --project src/TodoList.Modern
 ```
 
-Durante o desenvolvimento, a especificação OpenAPI é disponibilizada pela aplicação. Também há um arquivo `.http` no projeto em camadas com exemplos de chamadas para os endpoints.
+Durante o desenvolvimento, a interface Swagger UI fica disponível em `/swagger` nas duas aplicações, com os documentos OpenAPI em `/openapi/v1.json`. Também há um arquivo `.http` no projeto em camadas com exemplos de chamadas para os endpoints.
 
 ## Estrutura da solução
 

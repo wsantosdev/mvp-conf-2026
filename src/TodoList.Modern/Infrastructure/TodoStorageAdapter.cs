@@ -3,15 +3,20 @@ using TodoList.Modern.Domain;
 using TodoList.Modern.Features.CancelTask;
 using TodoList.Modern.Features.CompleteTask;
 using TodoList.Modern.Features.CreateTask;
+using TodoList.Modern.Features.ListTasks;
 
 namespace TodoList.Modern.Infrastructure;
 
 public class TodoStorageAdapter :
     ICreateTaskPort,
     ICancelTaskPort,
-    ICompleteTaskPort
+    ICompleteTaskPort,
+    IListTasksPort
 {
     private readonly ConcurrentDictionary<Guid, TodoItem> _db = new();
+
+    public Task<IReadOnlyList<TodoItem>> ListAsync() =>
+        Task.FromResult<IReadOnlyList<TodoItem>>(_db.Values.ToArray());
 
     public Task SaveAsync(TodoItem item)
     {
