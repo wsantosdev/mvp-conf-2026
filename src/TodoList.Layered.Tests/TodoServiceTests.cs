@@ -8,6 +8,22 @@ namespace TodoList.Layered.Tests;
 public class TodoServiceTests
 {
     [Fact]
+    public async Task ListAsync_ReturnsAllTodos()
+    {
+        var repository = new TestTodoRepository();
+        var firstTodo = new TodoItem { Id = Guid.NewGuid(), Title = "First" };
+        var secondTodo = new TodoItem { Id = Guid.NewGuid(), Title = "Second" };
+        await repository.AddAsync(firstTodo);
+        await repository.AddAsync(secondTodo);
+
+        var todos = await new TodoService(repository).ListAsync();
+
+        Assert.Equal(
+            new[] { firstTodo.Id, secondTodo.Id }.Order(),
+            todos.Select(todo => todo.Id).Order());
+    }
+
+    [Fact]
     public async Task CreateAsync_WithValidTitle_CreatesPendingTodo()
     {
         var repository = new TestTodoRepository();
@@ -86,6 +102,9 @@ public class TodoServiceTests
     private sealed class TestTodoRepository : ITodoRepository
     {
         private readonly Dictionary<Guid, TodoItem> _items = new();
+        public Task<IReadOnlyList<TodoItem>> ListAsync() =>
+            Task.FromResult<IReadOnlyList<TodoItem>>(_items.Values.ToArray());
+
         public Task<TodoItem?> GetByIdAsync(Guid id)
         {
             _items.TryGetValue(id, out var item);

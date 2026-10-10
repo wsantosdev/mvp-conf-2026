@@ -28,6 +28,20 @@ public class TodoWebApplicationFactoryTests : IClassFixture<WebApplicationFactor
     }
 
     [Fact]
+    public async Task ListEndpoint_WithCreatedTodo_ReturnsTodo()
+    {
+        var id = await CreateTodoAsync("List me");
+
+        var response = await _client.GetAsync("/api/v1/todos");
+
+        Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+        using var body = await JsonDocument.ParseAsync(await response.Content.ReadAsStreamAsync());
+        Assert.Contains(body.RootElement.EnumerateArray(),
+            todo => todo.GetProperty("id").GetGuid() == id
+                    && todo.GetProperty("title").GetString() == "List me");
+    }
+
+    [Fact]
     public async Task CancelEndpoint_WithCreatedTodo_ReturnsNoContent()
     {
         var id = await CreateTodoAsync("Cancel me");

@@ -8,6 +8,8 @@ public class TodoService : ITodoService
     private readonly ITodoRepository _repository;
     public TodoService(ITodoRepository repository) => _repository = repository;
 
+    public Task<IReadOnlyList<TodoItem>> ListAsync() => _repository.ListAsync();
+
     public async Task<Guid> CreateAsync(CreateTodoDto dto)
     {
         if (string.IsNullOrWhiteSpace(dto.Title))

@@ -7,13 +7,16 @@ public static class Endpoints
 {
     public static IEndpointRouteBuilder MapEndpoints(this IEndpointRouteBuilder app)
     {
-        var group = app.MapGroup("/api/v1/todos").WithTags("Todos - N-Tier");
+        var group = app.MapGroup("/api/v1/todos").WithTags("Todos - Layred");
+        group.MapGet("/", async ([FromServices] ITodoService service) =>
+            Results.Ok(await service.ListAsync()));
+
         group.MapPost("/", async ([FromBody] CreateTodoDto dto, [FromServices] ITodoService service) =>
         {
             try
             {
                 var id = await service.CreateAsync(dto);
-                return Results.Created($"/api/v1/todos/{id}", new { Id = id, Message = "Tarefa criada com sucesso (N-Tier)!" });
+                return Results.Created($"/api/v1/todos/{id}", new { Id = id, Message = "Tarefa criada com sucesso (Layered)!" });
             }
             catch (ArgumentException ex)
             {
