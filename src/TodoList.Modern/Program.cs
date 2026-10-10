@@ -12,6 +12,7 @@ builder.Services.AddSingleton<InMemoryDatabase>();
 builder.Services.AddSingleton<ICreateTaskPort, InMemoryCreateTaskAdapter>();
 builder.Services.AddSingleton<ICancelTaskPort, InMemoryCancelTaskAdapter>();
 builder.Services.AddSingleton<ICompleteTaskPort, InMemoryCompleteTaskAdapter>();
+builder.Services.AddSingleton<IListTasksPort, InMemoryListTasksAdapter>();
 
 builder.Services.AddTransient<CreateTaskHandler>();
 builder.Services.AddTransient<CancelTaskHandler>();

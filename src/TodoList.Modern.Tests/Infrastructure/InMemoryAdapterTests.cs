@@ -3,6 +3,7 @@ using TodoList.Modern.Domain;
 using TodoList.Modern.Features.CancelTask;
 using TodoList.Modern.Features.CompleteTask;
 using TodoList.Modern.Features.CreateTask;
+using TodoList.Modern.Features.ListTasks;
 using TodoList.Modern.Infrastructure;
 using Xunit;
 
@@ -17,12 +18,14 @@ public class InMemoryAdapterTests
         var createAdapter = new InMemoryCreateTaskAdapter(database);
         var cancelAdapter = new InMemoryCancelTaskAdapter(database);
         var completeAdapter = new InMemoryCompleteTaskAdapter(database);
+        var listAdapter = new InMemoryListTasksAdapter(database);
         var todo = new TodoItem("Share between slices");
 
         await createAdapter.SaveAsync(todo);
 
         Assert.Same(todo, await cancelAdapter.GetByIdAsync(todo.Id));
         Assert.Same(todo, await completeAdapter.GetByIdAsync(todo.Id));
+        Assert.Contains(todo, await listAdapter.ListAsync());
 
         todo.Cancel();
         await cancelAdapter.UpdateAsync(todo);
@@ -44,4 +47,5 @@ public class InMemoryAdapterTests
         Assert.Null(await cancelAdapter.GetByIdAsync(id));
         Assert.Null(await completeAdapter.GetByIdAsync(id));
     }
+
 }

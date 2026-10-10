@@ -15,5 +15,7 @@ public sealed class InMemoryDatabase
         return item;
     }
 
+    public IReadOnlyList<TodoItem> GetAll() => [.. _items.Values];
+
     public void Update(TodoItem item) => _items[item.Id] = item;
 }

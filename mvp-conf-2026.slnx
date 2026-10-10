@@ -1,8 +1,8 @@
 <Solution>
-  <Project Path="src\TodoList.Modern\TodoList.Modern.csproj" />
-  <Folder Name="/Tests/">
+  <Folder Name="/Layered/">
+    <Project Path="src\TodoList.Layered\TodoList.Layered.csproj" />
     <Project Path="src\TodoList.Layered.Tests\TodoList.Layered.Tests.csproj" />
-    <Project Path="src\TodoList.Modern.Tests\TodoList.Modern.Tests.csproj" />
   </Folder>
-  <Project Path="src\TodoList.Layered\TodoList.Layered.csproj" />
+  <Project Path="src\TodoList.Modern\TodoList.Modern.csproj" />
+  <Project Path="src\TodoList.Modern.Tests\TodoList.Modern.Tests.csproj" />
 </Solution>
