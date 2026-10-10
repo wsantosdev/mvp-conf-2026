@@ -9,7 +9,11 @@
 
     <ItemGroup>
       <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.12" />
+<<<<<<< Updated upstream
       <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="10.2.3" />
+=======
+      <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="10.1.4" />
+>>>>>>> Stashed changes
     </ItemGroup>
 
     <ItemGroup>
