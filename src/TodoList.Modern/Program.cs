@@ -8,11 +8,10 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddOpenApi();
 
-var memoryAdapter = new TodoStorageAdapter();
-builder.Services.AddSingleton<ICreateTaskPort>(memoryAdapter);
-builder.Services.AddSingleton<ICancelTaskPort>(memoryAdapter);
-builder.Services.AddSingleton<ICompleteTaskPort>(memoryAdapter);
-builder.Services.AddSingleton<IListTasksPort>(memoryAdapter);
+builder.Services.AddSingleton<InMemoryDatabase>();
+builder.Services.AddSingleton<ICreateTaskPort, InMemoryCreateTaskAdapter>();
+builder.Services.AddSingleton<ICancelTaskPort, InMemoryCancelTaskAdapter>();
+builder.Services.AddSingleton<ICompleteTaskPort, InMemoryCompleteTaskAdapter>();
 
 builder.Services.AddTransient<CreateTaskHandler>();
 builder.Services.AddTransient<CancelTaskHandler>();
@@ -25,7 +24,7 @@ if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
     app.UseSwaggerUI(options =>
-        options.SwaggerEndpoint("/openapi/v1.json", "TodoList Modern API v1"));
+        options.SwaggerEndpoint("/openapi/v1.json", "TodoList.Modern v1"));
 }
 
 app.MapCreateTaskEndpoint();

@@ -1,0 +1,16 @@
+@TodoList_Modern_HostAddress = http://localhost:5188
+@TodoId = 00000000-0000-0000-0000-000000000000
+
+### Create a task
+POST {{TodoList_Modern_HostAddress}}/api/v1/todos
+Content-Type: application/json
+
+{
+  "title": "Buy groceries"
+}
+
+### Complete a task (replace TodoId with the ID returned by the create request)
+POST {{TodoList_Modern_HostAddress}}/api/v1/todos/{{TodoId}}/complete
+
+### Cancel a task (replace TodoId with the ID returned by the create request)
+POST {{TodoList_Modern_HostAddress}}/api/v1/todos/{{TodoId}}/cancel
