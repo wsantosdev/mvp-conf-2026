@@ -35,7 +35,7 @@ public class CancelTaskTests
         Assert.Null(port.UpdatedItem);
     }
 
-    private sealed class TestTaskPort : ICancelTaskPort
+    private sealed class TestTaskPort : ICancelTaskDatabasePort
     {
         private readonly TodoItem? _item;
         public TodoItem? UpdatedItem { get; private set; }

@@ -15,10 +15,10 @@ public class InMemoryAdapterTests
     public async Task Adapters_WithSharedDatabase_ExposeAndUpdateSameTodo()
     {
         var database = new InMemoryDatabase();
-        var createAdapter = new InMemoryCreateTaskAdapter(database);
-        var cancelAdapter = new InMemoryCancelTaskAdapter(database);
-        var completeAdapter = new InMemoryCompleteTaskAdapter(database);
-        var listAdapter = new InMemoryListTasksAdapter(database);
+        var createAdapter = new CreateTaskRepository(database);
+        var cancelAdapter = new CancelTaskRepository(database);
+        var completeAdapter = new CompleteTaskRepository(database);
+        var listAdapter = new ListTasksRepository(database);
         var todo = new TodoItem("Share between slices");
 
         await createAdapter.SaveAsync(todo);
@@ -40,8 +40,8 @@ public class InMemoryAdapterTests
     public async Task Adapters_WithUnknownId_ReturnNull()
     {
         var database = new InMemoryDatabase();
-        var cancelAdapter = new InMemoryCancelTaskAdapter(database);
-        var completeAdapter = new InMemoryCompleteTaskAdapter(database);
+        var cancelAdapter = new CancelTaskRepository(database);
+        var completeAdapter = new CompleteTaskRepository(database);
         var id = Guid.NewGuid();
 
         Assert.Null(await cancelAdapter.GetByIdAsync(id));

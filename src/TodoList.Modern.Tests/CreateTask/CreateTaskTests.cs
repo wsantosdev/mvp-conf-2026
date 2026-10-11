@@ -32,7 +32,7 @@ public class CreateTaskTests
         Assert.Null(port.SavedItem);
     }
 
-    private sealed class TestCreateTaskPort : ICreateTaskPort
+    private sealed class TestCreateTaskPort : ICreateTaskDatabasePort
     {
         public TodoItem? SavedItem { get; private set; }
         public Task SaveAsync(TodoItem item)

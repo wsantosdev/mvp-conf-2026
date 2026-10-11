@@ -3,7 +3,7 @@ using TodoList.Modern.Infrastructure;
 
 namespace TodoList.Modern.Features.ListTasks;
 
-public sealed class InMemoryListTasksAdapter(InMemoryDatabase database) : IListTasksPort
+public sealed class ListTasksRepository(InMemoryDatabase database) : IListTasksDatabasePort
 {
     public Task<IReadOnlyList<TodoItem>> ListAsync() => Task.FromResult(database.GetAll());
 }

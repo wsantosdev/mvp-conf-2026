@@ -2,8 +2,9 @@ namespace TodoList.Modern.Features.CancelTask;
 
 public class CancelTaskHandler
 {
-    private readonly ICancelTaskPort _port;
-    public CancelTaskHandler(ICancelTaskPort port) => _port = port;
+    private readonly ICancelTaskDatabasePort _port;
+
+    public CancelTaskHandler(ICancelTaskDatabasePort port) => _port = port;
 
     public async Task HandleAsync(CancelTaskCommand command)
     {

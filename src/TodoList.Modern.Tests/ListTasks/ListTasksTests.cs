@@ -25,7 +25,7 @@ public class ListTasksTests
     [Fact]
     public async Task ListAsync_WithNoTodos_ReturnsEmptyList()
     {
-        var adapter = new InMemoryListTasksAdapter(new InMemoryDatabase());
+        var adapter = new ListTasksRepository(new InMemoryDatabase());
 
         var todos = await adapter.ListAsync();
 
@@ -40,7 +40,7 @@ public class ListTasksTests
         var secondTodo = new TodoItem("Second");
         database.Save(firstTodo);
         database.Save(secondTodo);
-        var adapter = new InMemoryListTasksAdapter(database);
+        var adapter = new ListTasksRepository(database);
 
         var todos = await adapter.ListAsync();
 
@@ -49,7 +49,7 @@ public class ListTasksTests
         Assert.Contains(secondTodo, todos);
     }
 
-    private sealed class TestListTasksPort(IReadOnlyList<TodoItem> tasks) : IListTasksPort
+    private sealed class TestListTasksPort(IReadOnlyList<TodoItem> tasks) : IListTasksDatabasePort
     {
         public Task<IReadOnlyList<TodoItem>> ListAsync() => Task.FromResult(tasks);
     }

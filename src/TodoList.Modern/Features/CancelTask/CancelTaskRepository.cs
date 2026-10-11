@@ -3,7 +3,7 @@ using TodoList.Modern.Infrastructure;
 
 namespace TodoList.Modern.Features.CancelTask;
 
-public sealed class InMemoryCancelTaskAdapter(InMemoryDatabase database) : ICancelTaskPort
+public sealed class CancelTaskRepository(InMemoryDatabase database) : ICancelTaskDatabasePort
 {
     public Task<TodoItem?> GetByIdAsync(Guid id) => Task.FromResult(database.GetById(id));
 

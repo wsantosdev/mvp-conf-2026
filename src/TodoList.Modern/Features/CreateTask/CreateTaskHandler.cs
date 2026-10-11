@@ -4,8 +4,9 @@ namespace TodoList.Modern.Features.CreateTask;
 
 public class CreateTaskHandler
 {
-    private readonly ICreateTaskPort _port;
-    public CreateTaskHandler(ICreateTaskPort port) => _port = port;
+    private readonly ICreateTaskDatabasePort _port;
+
+    public CreateTaskHandler(ICreateTaskDatabasePort port) => _port = port;
 
     public async Task<Guid> HandleAsync(CreateTaskCommand command)
     {

@@ -2,7 +2,7 @@ using TodoList.Modern.Domain;
 
 namespace TodoList.Modern.Features.CreateTask;
 
-public interface ICreateTaskPort
+public interface ICreateTaskDatabasePort
 {
     Task SaveAsync(TodoItem item);
 }

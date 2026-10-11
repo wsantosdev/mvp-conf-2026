@@ -3,7 +3,7 @@ using TodoList.Modern.Infrastructure;
 
 namespace TodoList.Modern.Features.CompleteTask;
 
-public sealed class InMemoryCompleteTaskAdapter(InMemoryDatabase database) : ICompleteTaskPort
+public sealed class CompleteTaskRepository(InMemoryDatabase database) : ICompleteTaskDatabasePort
 {
     public Task<TodoItem?> GetByIdAsync(Guid id) => Task.FromResult(database.GetById(id));
 

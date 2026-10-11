@@ -2,8 +2,9 @@ namespace TodoList.Modern.Features.CompleteTask;
 
 public class CompleteTaskHandler
 {
-    private readonly ICompleteTaskPort _port;
-    public CompleteTaskHandler(ICompleteTaskPort port) => _port = port;
+    private readonly ICompleteTaskDatabasePort _port;
+
+    public CompleteTaskHandler(ICompleteTaskDatabasePort port) => _port = port;
 
     public async Task HandleAsync(CompleteTaskCommand command)
     {

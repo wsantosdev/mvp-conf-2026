@@ -3,7 +3,7 @@ using TodoList.Modern.Infrastructure;
 
 namespace TodoList.Modern.Features.CreateTask;
 
-public sealed class InMemoryCreateTaskAdapter(InMemoryDatabase database) : ICreateTaskPort
+public sealed class CreateTaskRepository(InMemoryDatabase database) : ICreateTaskDatabasePort
 {
     public Task SaveAsync(TodoItem item)
     {

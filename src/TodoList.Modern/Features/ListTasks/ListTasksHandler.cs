@@ -4,9 +4,9 @@ namespace TodoList.Modern.Features.ListTasks;
 
 public class ListTasksHandler
 {
-    private readonly IListTasksPort _port;
+    private readonly IListTasksDatabasePort _port;
 
-    public ListTasksHandler(IListTasksPort port) => _port = port;
+    public ListTasksHandler(IListTasksDatabasePort port) => _port = port;
 
     public Task<IReadOnlyList<TodoItem>> HandleAsync() => _port.ListAsync();
 }
