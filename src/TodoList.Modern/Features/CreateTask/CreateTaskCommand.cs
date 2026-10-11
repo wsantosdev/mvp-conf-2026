@@ -1,3 +1,3 @@
 namespace TodoList.Modern.Features.CreateTask;
 
-public record CreateTaskCommand(string Title);
+public readonly record struct CreateTaskCommand(string Title);

@@ -1,3 +1,3 @@
 namespace TodoList.Modern.Features.CancelTask;
 
-public record CancelTaskCommand(Guid Id);
+public sealed record CancelTaskCommand(Guid Id);

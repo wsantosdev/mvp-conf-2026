@@ -2,11 +2,7 @@ using TodoList.Modern.Domain;
 
 namespace TodoList.Modern.Features.ListTasks;
 
-public class ListTasksHandler
+public sealed class ListTasksHandler(IListTasksDatabasePort port)
 {
-    private readonly IListTasksDatabasePort _port;
-
-    public ListTasksHandler(IListTasksDatabasePort port) => _port = port;
-
-    public Task<IReadOnlyList<TodoItem>> HandleAsync() => _port.ListAsync();
+    public Task<IReadOnlyList<TodoItem>> HandleAsync() => port.ListAsync();
 }

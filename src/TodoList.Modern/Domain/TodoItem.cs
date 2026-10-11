@@ -1,21 +1,18 @@
 namespace TodoList.Modern.Domain;
 
-public class TodoItem
+public sealed class TodoItem(string title)
 {
-    public Guid Id { get; private set; }
-    public string Title { get; private set; }
+    public string Title { get; private set; } = ValidateTitle(title);
+    public Guid Id { get; private set; } = Guid.NewGuid();
     public bool IsCompleted { get; private set; }
     public bool IsCancelled { get; private set; }
 
-    public TodoItem(string title)
+    private static string ValidateTitle(string title)
     {
         if (string.IsNullOrWhiteSpace(title))
             throw new ArgumentException("O título da tarefa não pode ser vazio.", nameof(title));
 
-        Id = Guid.NewGuid();
-        Title = title;
-        IsCompleted = false;
-        IsCancelled = false;
+        return title;
     }
 
     public void Cancel()
