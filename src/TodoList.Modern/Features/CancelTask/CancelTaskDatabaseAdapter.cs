@@ -1,9 +1,9 @@
 using TodoList.Modern.Domain;
 using TodoList.Modern.Infrastructure;
 
-namespace TodoList.Modern.Features.CompleteTask;
+namespace TodoList.Modern.Features.CancelTask;
 
-public sealed class CompleteTaskRepository(InMemoryDatabase database) : ICompleteTaskDatabasePort
+public sealed class CancelTaskDatabaseAdapter(InMemoryDatabase database) : ICancelTaskDatabasePort
 {
     public Task<TodoItem?> GetByIdAsync(Guid id) => Task.FromResult(database.GetById(id));
 

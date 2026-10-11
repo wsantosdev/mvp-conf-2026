@@ -9,10 +9,10 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddOpenApi();
 
 builder.Services.AddSingleton<InMemoryDatabase>();
-builder.Services.AddSingleton<ICreateTaskDatabasePort, CreateTaskRepository>();
-builder.Services.AddSingleton<ICancelTaskDatabasePort, CancelTaskRepository>();
-builder.Services.AddSingleton<ICompleteTaskDatabasePort, CompleteTaskRepository>();
-builder.Services.AddSingleton<IListTasksDatabasePort, ListTasksRepository>();
+builder.Services.AddSingleton<ICreateTaskDatabasePort, CreateTaskDatabaseAdapter>();
+builder.Services.AddSingleton<ICancelTaskDatabasePort, CancelTaskDatabaseAdapter>();
+builder.Services.AddSingleton<ICompleteTaskDatabasePort, CompleteTaskDatabaseAdapter>();
+builder.Services.AddSingleton<IListTasksDatabasePort, ListTasksDatabaseAdapter>();
 
 builder.Services.AddTransient<CreateTaskHandler>();
 builder.Services.AddTransient<CancelTaskHandler>();

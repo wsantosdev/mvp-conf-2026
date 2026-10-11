@@ -25,7 +25,7 @@ public class ListTasksTests
     [Fact]
     public async Task ListAsync_WithNoTodos_ReturnsEmptyList()
     {
-        var adapter = new ListTasksRepository(new InMemoryDatabase());
+        var adapter = new ListTasksDatabaseAdapter(new InMemoryDatabase());
 
         var todos = await adapter.ListAsync();
 
@@ -40,7 +40,7 @@ public class ListTasksTests
         var secondTodo = new TodoItem("Second");
         database.Save(firstTodo);
         database.Save(secondTodo);
-        var adapter = new ListTasksRepository(database);
+        var adapter = new ListTasksDatabaseAdapter(database);
 
         var todos = await adapter.ListAsync();
 
