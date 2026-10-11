@@ -1,15 +1,22 @@
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc.Testing;
 using System.Net;
 using System.Net.Http.Json;
 using System.Text.Json;
-using Microsoft.AspNetCore.Mvc.Testing;
 using Xunit;
 
 namespace TodoList.Modern.Tests;
 
-public class CompleteTaskWebApplicationFactoryTests : IClassFixture<WebApplicationFactory<Program>>
+public class CompleteTaskWebApplicationFactoryTests : WebApplicationFactory<Program>
 {
     private readonly HttpClient _client;
-    public CompleteTaskWebApplicationFactoryTests(WebApplicationFactory<Program> factory) => _client = factory.CreateClient();
+    public CompleteTaskWebApplicationFactoryTests() => _client = CreateClient();
+
+    protected override void ConfigureWebHost(IWebHostBuilder builder)
+    {
+        var contentRoot = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "..", "..", ".."));
+        builder.UseContentRoot(contentRoot);
+    }
 
     [Fact]
     public async Task CompleteTaskEndpoint_WithCreatedTodo_ReturnsNoContent()
