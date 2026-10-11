@@ -9,13 +9,17 @@
 
     <ItemGroup>
       <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.12" />
+      <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="10.0.12" />
       <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="10.2.3" />
+      <PackageReference Include="xunit" Version="2.9.3" PrivateAssets="All" />
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Features\CancelTask\" />
-      <Folder Include="Features\CompleteTask\" />
-      <Folder Include="Features\CreateTask\" />
+        <Compile Remove="**\*Tests.cs" />
+    </ItemGroup>
+
+    <ItemGroup Condition="'$(Configuration)' == 'Debug'">
+        <Compile Include="**\*Tests.cs" />
     </ItemGroup>
 
 </Project>

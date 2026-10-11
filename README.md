@@ -105,7 +105,7 @@ Essa organização favorece alta coesão dentro de cada funcionalidade e torna m
 Os projetos de teste acompanham as duas abordagens:
 
 - `TodoList.Layered.Tests` testa o serviço e os fluxos HTTP da versão em camadas.
-- `TodoList.Modern.Tests` testa cada slice (`CreateTask`, `CompleteTask`, `CancelTask` e `ListTasks`) e seus fluxos HTTP.
+- Os testes da versão moderna ficam junto às respectivas funcionalidades em `TodoList.Modern/Features` e à infraestrutura em `TodoList.Modern/Infrastructure`, e são executados pelo projeto `TodoList.Modern.Tests`.
 
 Além dos caminhos felizes, os testes cobrem títulos vazios, tarefas inexistentes e transições de estado inválidas. A versão moderna evidencia o isolamento proporcionado pelas ports, usando implementações de teste dos contratos de cada funcionalidade.
 

@@ -4,5 +4,4 @@
     <Project Path="src\TodoList.Layered.Tests\TodoList.Layered.Tests.csproj" />
   </Folder>
   <Project Path="src\TodoList.Modern\TodoList.Modern.csproj" />
-  <Project Path="src\TodoList.Modern.Tests\TodoList.Modern.Tests.csproj" />
 </Solution>
