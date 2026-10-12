@@ -9,7 +9,7 @@ using Xunit;
 
 namespace TodoList.Modern.Tests;
 
-public class InMemoryAdapterTests
+public class InMemoryDatabaseTests
 {
     [Fact]
     public async Task Adapters_WithSharedDatabase_ExposeAndUpdateSameTodo()
